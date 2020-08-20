@@ -991,8 +991,8 @@ def _finalize(results):
 
 def finalize(results):
     res = _finalize(results)
-    if type(res) == np.ndarray and not res.flags.writeable:
-        res = np.array(res, copy=True)
+    if isinstance(res, np.ndarray) and not res.flags.writeable:
+        res = res.copy()
     return res
 
 
